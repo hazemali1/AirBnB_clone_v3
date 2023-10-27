@@ -97,6 +97,6 @@ class FileStorage:
 
     def count(self, cls=None):
         """
-				count class
-				"""
+        count class
+        """
         return len(self.all(cls))
