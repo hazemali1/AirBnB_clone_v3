@@ -30,8 +30,8 @@ class DBStorage:
         host = os.getenv('HBNB_MYSQL_HOST')
         database = os.getenv('HBNB_MYSQL_DB')
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".format(usr,
-                                      password, host, database),
-                                      pool_pre_ping=True)
+            password, host, database),
+            pool_pre_ping=True)
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
@@ -81,11 +81,11 @@ class DBStorage:
         self.__session = scoped_session(session)
 
     def get(self, cls, id):
-				"""
-				get
-				"""
-				if cls and id:
-					print(self.all(cls))
+        """
+        get
+        """
+        if cls and id:
+            print(self.all(cls))
 
     def close(self):
         """

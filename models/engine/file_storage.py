@@ -83,3 +83,10 @@ class FileStorage:
         deserializing
         """
         self.reload()
+
+    def get(self, cls, id):
+        """
+        get
+        """
+        if cls and id:
+            print(self.all(cls))
