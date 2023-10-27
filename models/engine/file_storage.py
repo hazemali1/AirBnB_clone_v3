@@ -95,3 +95,4 @@ class FileStorage:
                 print(str(cls).split("'")[1].split('.')[2] + '.' + str(id))
                 if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
                     return obj[k]
+        return None
