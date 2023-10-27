@@ -101,4 +101,4 @@ class DBStorage:
         """
         count
         """
-        pass
+        return len(self.all(cls))
