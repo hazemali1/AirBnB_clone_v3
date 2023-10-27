@@ -108,4 +108,4 @@ class DBStorage:
         return None
 				
     def count(self, cls=None):
-        pass
+        return len(self.all(cls))
