@@ -93,5 +93,5 @@ class FileStorage:
             for k in obj:
                 print(k)
                 print(cls)
-                if k == cls.__name__ + '.' + str(id):
-                    return obj[k]
+                return obj[k]
+                
