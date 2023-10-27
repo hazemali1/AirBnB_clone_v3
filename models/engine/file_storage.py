@@ -92,6 +92,6 @@ class FileStorage:
             obj = self.all(cls)
             for k in obj:
                 print(k)
-                print(cls)
-                print(obj[k])
-                
+                print(dir(cls))
+                if k == cls.__name__ + '.' + str(id):
+                    return obj[k]
