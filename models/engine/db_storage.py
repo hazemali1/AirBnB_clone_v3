@@ -80,6 +80,11 @@ class DBStorage:
         session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session)
 
+    def get(self, cls, id):
+
+
+    def count(self, cls=None):
+        
     def close(self):
         """
         close
