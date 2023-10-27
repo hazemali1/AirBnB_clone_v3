@@ -80,16 +80,6 @@ class DBStorage:
         session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session)
 
-    def get(self, cls, id):
-        """
-        get
-        """
-        if cls and id:
-            obj = self.all(cls)
-            for k, v in obj.items():
-                if k == cls.__name__ + '.' + str(id):
-                    return v
-
     def close(self):
         """
         close
