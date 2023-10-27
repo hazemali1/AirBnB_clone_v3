@@ -93,5 +93,5 @@ class FileStorage:
             for k in obj:
                 print(k)
                 print(cls)
-                return obj[k]
+                print(obj[k])
                 
