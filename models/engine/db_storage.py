@@ -81,10 +81,12 @@ class DBStorage:
         self.__session = scoped_session(session)
 
     def get(self, cls, id):
+				"""
+				get
+				"""
+				if cls and id:
+					print(self.all(cls))
 
-
-    def count(self, cls=None):
-        
     def close(self):
         """
         close
