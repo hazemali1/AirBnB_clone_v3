@@ -84,7 +84,11 @@ class DBStorage:
         """
         get
         """
-        pass
+        if cls and id:
+            obj = self.all(cls)
+            for k, v in obj.items():
+                if k == cls.__name__ + '.' + str(id):
+                    return v
 
     def close(self):
         """
