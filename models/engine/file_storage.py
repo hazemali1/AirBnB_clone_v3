@@ -92,6 +92,7 @@ class FileStorage:
             obj = self.all(cls)
             for k, v in obj.items():
                 print(k, v)
+								print(cls)
                 if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
                     return obj[k]
         return None
