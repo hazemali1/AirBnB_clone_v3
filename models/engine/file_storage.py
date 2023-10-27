@@ -90,15 +90,9 @@ class FileStorage:
         """
         if cls and id:
             obj = self.all(cls)
-            for k,v in obj.items():
+            for k in obj:
                 print(k)
-<<<<<<< HEAD
-                print(str(cls).split('.')[2])
-                if k == cls.__name__ + '.' + str(id):
-                    return v
-=======
                 print(str(cls).split("'")[1].split('.')[2] + '.' + str(id))
                 if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
                     return obj[k]
         return None
->>>>>>> 3e74bc2a3f2afe418efca8bdab52b3b3e8871ecc
