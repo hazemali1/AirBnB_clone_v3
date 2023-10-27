@@ -97,4 +97,8 @@ class DBStorage:
                     return obj[k]
         return None
 				
-
+    def count(self, cls=None):
+        """
+        count
+        """
+        pass
