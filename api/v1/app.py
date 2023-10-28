@@ -25,6 +25,14 @@ def teardown(exception):
     storage.close()
 
 
+@app.errorhandler(404)
+def error():
+    """
+    error not found
+    """
+    return (jsonify({"error": "Not found"}), 404)
+
+
 if __name__ == '__main__':
     """
     main
