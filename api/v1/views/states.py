@@ -7,29 +7,17 @@ from models.city import City
 from api.v1.views import app_views
 
 
-@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
-def get_cities(state_id):
+@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+def get_state(state_id):
     """
-    city
+    state_id
     """
-    list_city = []
+    list_state = []
     state = storage.get(State, state_id)
     if not state:
         abort(404)
-    for city in state.cities:
-        list_city.append(city.to_dict())
-    return jsonify(list_city)
-
-
-@app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
-def get_city(city_id):
-    """
-    city
-    """
-    city = storage.get(City, city_id)
-    if not city:
-        abort(404)
-    return jsonify(city.to_dict())
+    list_state.append(state)
+    return jsonify(list_state)
 
 
 @app_views.route('/cities/<city_id>', methods=['DELETE'], strict_slashes=False)
