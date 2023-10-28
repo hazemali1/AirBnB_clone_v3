@@ -22,3 +22,14 @@ def states():
     for state in states.values():
         li.append(state.to_dict())
     return jsonify(li)
+
+
+@app_views.route('/states/<state_id>')
+def states_id(state_id):
+    """states_id"""
+    li = []
+    states = storage.all(State)
+    for state in states.values():
+        if state.id == state_id:
+            li.append(state.to_dict())
+    return jsonify(li)
