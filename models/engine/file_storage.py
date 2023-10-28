@@ -92,6 +92,7 @@ class FileStorage:
             obj = list(self.all(State).values())
             for k in obj:
                 print(k.__class__.__name__ + "." + k.id)
+                print(str(cls).split("'")[1].split('.')[2] + '.' + str(id))
         return None
 
     def count(self, cls=None):
