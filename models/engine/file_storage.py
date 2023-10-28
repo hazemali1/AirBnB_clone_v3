@@ -89,7 +89,7 @@ class FileStorage:
         get
         """
         if cls and id:
-            print("{}.{}".format(cls.__class__.__name, id))
+            print("{}.{}".format(str(cls).__class__.__name, id))
             obj = self.all(cls)
             for k in obj:
                 if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
