@@ -32,7 +32,7 @@ def states_id(state_id=None):
     for state in states.values():
         if state.id == state_id:
             li.append(state.to_dict())
-    if len(li):
+    if len(li) != 0:
         return jsonify(li)
     else:
         abort(404)
