@@ -25,7 +25,7 @@ def states():
 
 
 @app_views.route('/states/<state_id>')
-def states_id(state_id):
+def states_id(state_id=None):
     """states_id"""
     li = []
     states = storage.all(State)
