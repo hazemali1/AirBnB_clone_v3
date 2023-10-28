@@ -5,6 +5,7 @@ import app flask json
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
+from models.engine.file_storage import class_dict
 """
 import flask
 """
@@ -24,7 +25,7 @@ def stats():
     stats
     """
     dec = {}
-    classes = storage.class_dict
+    classes = class_dict
     dec["amenities"] = storage.count(classes["Amenity"])
     dec["cities"] = storage.count(classes["City"])
     dec["places"] = storage.count(classes["Place"])
