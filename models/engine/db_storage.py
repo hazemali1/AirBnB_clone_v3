@@ -90,10 +90,16 @@ class DBStorage:
         """
         get
         """
-        pass
+        if cls and id:
+            s = cls, __name__ + "." + id
+            obj = self.all(cls)
+            for k in obj:
+                if k == s:
+                    return obj[k]
+        return None
 
     def count(self, cls=None):
         """
         count
         """
-        return len(self.all(cls))
+        pass
