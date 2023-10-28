@@ -9,7 +9,7 @@ import flask
 """
 
 
-@app_views.route('/status')
+@app_views.route('/status', strict_slashes=False)
 def status():
     """
     status
