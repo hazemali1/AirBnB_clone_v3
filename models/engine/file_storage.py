@@ -99,4 +99,4 @@ class FileStorage:
         """
         count class
         """
-        return len(self.all(cls))
+        pass
