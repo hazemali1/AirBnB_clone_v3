@@ -91,7 +91,7 @@ class FileStorage:
         if cls and id:
             obj = list(self.all(State).values())
             for k in obj:
-                print(k)
+                print(k.id)
         return None
 
     def count(self, cls=None):
