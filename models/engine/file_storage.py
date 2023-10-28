@@ -94,7 +94,7 @@ class FileStorage:
                 f = k.__class__.__name__ + "." + k.id
                 s = str(cls).split("'")[1].split('.')[2] + '.' + str(id)
                 if f == s:
-                    return(f)
+                    return(k)
         return None
 
     def count(self, cls=None):
