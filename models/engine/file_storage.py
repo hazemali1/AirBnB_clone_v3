@@ -93,8 +93,7 @@ class FileStorage:
             for k in obj:
                 print(k)
                 print(str(cls).split("'")[1].split('.')[2] + '.' + str(id))
-                first_state_id = list(storage.all(State).values())[0].id
-                print("First state: {}".format(storage.get(State, first_state_id)))
+                print(list(storage.all(State).values())[0].id)
                 if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
                     return obj[k]
         return None
