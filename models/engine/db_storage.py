@@ -91,10 +91,9 @@ class DBStorage:
         get
         """
         if cls and id:
-            s = cls, __name__ + "." + id
             obj = self.all(cls)
             for k in obj:
-                if k == s:
+                if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
                     return obj[k]
         return None
 
@@ -102,4 +101,4 @@ class DBStorage:
         """
         count
         """
-        pass
+        return len(self.all(cls))
