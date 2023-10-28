@@ -24,7 +24,7 @@ def states():
     return jsonify(li)
 
 
-@app_views.route('/states/<int:state_id>')
+@app_views.route('/states/<state_id>')
 def states_id(state_id):
     """states_id"""
     li = []
