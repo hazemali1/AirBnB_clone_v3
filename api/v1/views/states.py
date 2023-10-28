@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 import app flask json
@@ -33,8 +32,7 @@ def states_id(state_id=None):
     for state in states.values():
         if state.id == state_id:
             li.append(state.to_dict())
-    if len(li) != 0:
+    if len(li):
         return jsonify(li)
     else:
         abort(404)
-
