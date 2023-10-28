@@ -45,8 +45,11 @@ def delete_city(city_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/states/<state_id>/cities', methods=['POST'])
+@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def post_city(state_id):
+    """
+    city
+    """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
