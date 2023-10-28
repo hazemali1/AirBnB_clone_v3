@@ -47,9 +47,6 @@ def delete_city(city_id):
 
 @app_views.route('/states/<state_id>/cities', methods=['POST'])
 def post_city(state_id):
-    """
-    city
-    """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -77,9 +74,9 @@ def put_city(city_id):
         abort(400, description="Not a JSON")
     if "name" not in data:
         abort(400, description="Missing name")
-    kignore = ["id", "state_id", "created_at", "updated_at"]
+    keys_to_ignore = ["id", "state_id", "created_at", "updated_at"]
     for key, value in data.items():
-        if key not in kignore:
+        if key not in keys_to_ignore:
             setattr(city, key, value)
     storage.save()
     return make_response(jsonify(city.to_dict()), 200)
