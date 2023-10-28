@@ -26,7 +26,7 @@ def teardown(exception):
 
 
 @app.errorhandler(404)
-def error():
+def error(error):
     """
     error not found
     """
