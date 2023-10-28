@@ -89,9 +89,11 @@ class FileStorage:
         get
         """
         if cls and id:
-            fetch_obj = "{}.{}".format(cls, id)
-            all_obj = self.all(cls)
-            return all_obj.get(fetch_obj)
+            print("{}.{}".format(cls.__class__.__name, id))
+            obj = self.all(cls)
+            for k in obj:
+                if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
+                    return obj[k]
         return None
 
     def count(self, cls=None):
