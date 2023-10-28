@@ -89,12 +89,9 @@ class FileStorage:
         get
         """
         if cls and id:
-            obj = list(self.all(State).values())[0]
+            obj = list(self.all(State).values())
             for k in obj:
                 print(k)
-                print(str(cls).split("'")[1].split('.')[2] + '.' + str(id))
-                if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
-                    return obj[k]
         return None
 
     def count(self, cls=None):
