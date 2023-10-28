@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-import app flask jsonify
-"""
+"""import app flask jsonify"""
 from api.v1.views import app_views
 from flask import jsonify
 """
