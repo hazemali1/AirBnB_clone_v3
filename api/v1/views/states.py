@@ -16,7 +16,7 @@ def get_state(state_id):
     state = storage.get(State, state_id)
     if not state:
         abort(404)
-    list_state.append(state)
+    list_state.append(state.to_dict())
     return jsonify(list_state)
 
 
