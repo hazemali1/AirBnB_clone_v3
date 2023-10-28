@@ -9,6 +9,9 @@ from api.v1.views import app_views
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'])
 def get_cities(state_id):
+    """
+    city
+    """
     list_city = []
     state = storage.get(State, state_id)
     if not state:
@@ -20,6 +23,9 @@ def get_cities(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def get_city(city_id):
+    """
+    city
+    """
     city = storage.get(City, city_id)
     if not city:
         abort(404)
@@ -28,6 +34,9 @@ def get_city(city_id):
 
 @app_views.route('/cities/<city_id>', methods=['DELETE'], strict_slashes=False)
 def delete_city(city_id):
+    """
+    city
+    """
     city = storage.get(City, city_id)
     if not city:
         abort(404)
@@ -38,6 +47,9 @@ def delete_city(city_id):
 
 @app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def post_city(state_id):
+    """
+    city
+    """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -54,6 +66,9 @@ def post_city(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def put_city(city_id):
+    """
+    city
+    """
     city = storage.get(City, city_id)
     if not city:
         abort(404)
