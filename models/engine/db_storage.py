@@ -93,7 +93,7 @@ class DBStorage:
         if cls and id:
             obj = self.all(cls)
             for k in obj:
-                if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
+                if k == cls, __name__ + "." + id:
                     return obj[k]
         return None
 
