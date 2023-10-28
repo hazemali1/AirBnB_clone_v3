@@ -14,4 +14,4 @@ def status():
     """
     status
     """
-    return jsonify({"status": "OK"})
+    return jsonify(status='OK')
