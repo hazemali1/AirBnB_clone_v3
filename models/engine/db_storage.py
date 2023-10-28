@@ -91,9 +91,10 @@ class DBStorage:
         get
         """
         if cls and id:
+            s = cls, __name__ + "." + id
             obj = self.all(cls)
             for k in obj:
-                if k == cls, __name__ + "." + id:
+                if k == s:
                     return obj[k]
         return None
 
