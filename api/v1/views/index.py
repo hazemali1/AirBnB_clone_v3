@@ -11,12 +11,10 @@ import flask
 """
 
 
-@app_views.route('/status')
+@app_views.route('/status', strict_slashes=False)
 def status():
-    """
-    status
-    """
-    return jsonify({"status": "OK"})
+    """ Returns status of the API """
+    return jsonify({'status': 'OK'})
 
 
 @app_views.route('/stats')
