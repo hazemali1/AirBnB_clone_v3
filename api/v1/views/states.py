@@ -7,7 +7,7 @@ from models.city import City
 from api.v1.views import app_views
 
 
-@app_views.route('/states/<state_id>/cities', methods=['GET'])
+@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
 def get_cities(state_id):
     """
     city
@@ -21,7 +21,7 @@ def get_cities(state_id):
     return jsonify(list_city)
 
 
-@app_views.route('/cities/<city_id>', methods=['GET'])
+@app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def get_city(city_id):
     """
     city
