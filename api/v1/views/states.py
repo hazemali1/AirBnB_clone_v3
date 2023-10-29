@@ -28,7 +28,7 @@ def states():
 @app_views.route('/states/<state_id>')
 def states_id(state_id=None):
     """states_id"""
-    state = storage.get_state(State, state_id)
+    state = storage.get(State, state_id)
     if state is None:
         abort(404)
     return jsonify(state)
