@@ -33,7 +33,7 @@ def users():
         req_password = req.get("password")
         if req_password is None:
             abort(400, 'Missing password')
-        obj = Amenity(**req)
+        obj = User(**req)
         obj.save()
         return (jsonify(obj.to_dict()), 201)
 
