@@ -45,7 +45,7 @@ def delete_city(city_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/states/<state_id>/cities', methods=['POST'])
+@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def post_city(state_id):
     """
     city
@@ -75,6 +75,8 @@ def put_city(city_id):
     data = request.get_json()
     if not data:
         abort(400, description="Not a JSON")
+    if "name" not in data:
+        abort(400, description="Missing name")
     keys_to_ignore = ["id", "state_id", "created_at", "updated_at"]
     for key, value in data.items():
         if key not in keys_to_ignore:
