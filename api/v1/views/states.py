@@ -28,13 +28,8 @@ def states():
 @app_views.route('/states/<state_id>')
 def states_id(state_id=None):
     """states_id"""
-    li = []
-    states = storage.all(State)
-    for state in states.values():
-        if state.id == state_id:
-            li.append(state.to_dict())
-    if len(li) != 0:
-        return jsonify(li)
-    else:
+    state = storage.get_state(State, state_id)
+    if state is None:
         abort(404)
+    return jsonify(state)
 
