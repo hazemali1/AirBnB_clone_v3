@@ -84,18 +84,7 @@ class FileStorage:
         """
         self.reload()
 
-    def get(self, cls, id):
-        """
-        get
-        """
-        if cls and id:
-            obj = list(self.all(State).values())
-            for k in obj:
-                f = k.__class__.__name__ + "." + k.id
-                s = str(cls).split("'")[1].split('.')[2] + '.' + str(id)
-                if f == s:
-                    return(k)
-        return None
+
 
     def count(self, cls=None):
         """
