@@ -20,7 +20,7 @@ class BaseModel:
     id = Column(String(60), nullable=False, primary_key=True, unique=True)
     created_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
     updated_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
-    
+
     def __init__(self, *args, **kwargs):
         """
         Instantiation
@@ -70,10 +70,14 @@ class BaseModel:
         my_dict["__class__"] = type(self).__name__
         my_dict["created_at"] = my_dict["created_at"].isoformat()
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
+        if "_sa_instance_state" in new_dict:
+            del new_dict["_sa_instance_state"]
+        if "password" in new_dict:
+            del new_dict["password"]
         return my_dict
-    
+
     def delete(self):
-            """
-            Delet
-            """
-            models.storage.delete(self)
+        """
+        Delet
+        """
+        models.storage.delete(self)
