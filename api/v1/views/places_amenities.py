@@ -13,13 +13,13 @@ import flask
 """
 
 
-@app_views.route("places/<place_id>/amenities",methods=['GET'])
+@app_views.route("places/<place_id>/amenities", methods=['GET'])
 @app_views.route('/places/<place_id>/amenities/', methods=['GET'])
 def get_amenities(place_id):
     """
     get amenities
     """
-    list_amenities=[]
+    list_amenities = []
     placeID = storage.get(place, place_id)
     if not placeID:
         abort(404)
@@ -30,7 +30,8 @@ def get_amenities(place_id):
     return jsonify(list_amenities)
 
 
-@app_views.route("places/<place_id>/amenities/<amenity_id>",methods=['DELETE'])
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
+                 methods=['DELETE'], strict_slashes=False)
 def del_amenities(place_id, amenity_id):
     """
     del amenities
@@ -46,7 +47,7 @@ def del_amenities(place_id, amenity_id):
     for amnyobj in placeID.items():
         if amnyobj.id == place_id:
             if amnyobj.amenities == []:
-                    abort(404)
+                abort(404)
             for amenity in amnyobj.amenities:
                 if amenity.id == amenity_id:
                     storage.delete(amenity)
@@ -55,8 +56,8 @@ def del_amenities(place_id, amenity_id):
     return jsonify({}), 200
 
 
-@app_views.route('/places/<place_id>/amenities/<amenity_id>',
-                methods=['POST'])
+@app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'],
+                 strict_slashes=False)
 def create_amenities(place_id, amenity_id):
     """
     Link a Amenity object to a Place
@@ -74,5 +75,5 @@ def create_amenities(place_id, amenity_id):
     for amnyobj in placeID.items():
         if amnyobj.id == place_id:
             for amny in amnyobj.amenities:
-                return make_response(jsonify((amny.id).to_dict), 200)
-    return make_response[jsonify(amenity),201]
+                return jsonify((amny.id).to_dict), 200
+    return jsonify(amenity), 201
