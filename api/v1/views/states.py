@@ -35,7 +35,7 @@ def states():
         return (jsonify(obj.to_dict()), 201)
 
 
-@app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'])
 def states_id(state_id=None):
     """states_id"""
     state = storage.get(State, state_id)
