@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" City """
+""" Place """
 from flask import jsonify, abort, make_response, request
 from models import storage
 from models.place import Place
