@@ -13,7 +13,7 @@ import flask
 """
 
 
-@app_views.route('/states')
+@app_views.route('/states/')
 def states():
     """
     states
