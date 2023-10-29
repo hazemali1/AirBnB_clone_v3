@@ -16,7 +16,7 @@ import flask
 def states():
     """
     states
-		"""
+    """
     if request.method == 'GET':
         li = []
         states = storage.all(State)
@@ -57,4 +57,3 @@ def states_id(state_id=None):
                 setattr(State, key, value)
         storage.save()
         return (jsonify(state.to_dict()), 200)
-
