@@ -7,15 +7,15 @@ from models.city import City
 from api.v1.views import app_views
 
 @app_views.route('/states')
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['GET'])
 def get_state(state_id=None):
     """
     state_id
     """
     list_state = []
     state = storage.get(State, state_id)
-
-    list_state.append(state.to_dict())
+    if state:
+        list_state.append(state.to_dict())
     return jsonify(list_state)
 
 
