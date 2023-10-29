@@ -10,6 +10,7 @@ from api.v1.views import app_views
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET'],
                  strict_slashes=False)
+@app_views.route('/places/<place_id>/reviews/', methods=['GET'])
 def get_reviews(place_id):
     """
     review
