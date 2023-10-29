@@ -86,16 +86,7 @@ class DBStorage:
         """
         self.__session.remove()
 
-    def get(self, cls, id):
-        """
-        get
-        """
-        if cls and id:
-            obj = self.all(cls)
-            for k in obj:
-                if k == str(cls).split("'")[1].split('.')[2] + '.' + str(id):
-                    return obj[k]
-        return None
+
 
     def count(self, cls=None):
         """
