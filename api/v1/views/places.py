@@ -60,6 +60,9 @@ def post_place(city_id):
         abort(400, description="Missing name")
     if "user_id" not in data:
         abort(400, description="Missing user_id")
+    user = storage.get(User, user_id)
+    if user is None:
+        abort(404)
     new_place = Place(**data)
     new_place.city_id = city.id
     new_place.save()
