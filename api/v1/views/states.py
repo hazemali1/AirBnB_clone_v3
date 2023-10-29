@@ -7,8 +7,7 @@ from models.city import City
 from api.v1.views import app_views
 
 @app_views.route('/states')
-@app_views.route('/states/<state_id>', methods=['GET'])
-def get_state(state_id=None):
+def get_state():
     """
     state_id
     """
