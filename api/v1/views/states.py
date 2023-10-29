@@ -12,10 +12,8 @@ def get_state():
     state_id
     """
     list_state = []
-    state = storage.get(State)
-    if state:
-        list_state.append(state.to_dict())
-    return jsonify(list_state)
+    state = storage.all(State)
+    return jsonify(list_state.to_dict())
 
 
 
