@@ -31,5 +31,5 @@ def states_id(state_id=None):
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
-    return jsonify(state)
+    return jsonify(state.to_dict())
 
