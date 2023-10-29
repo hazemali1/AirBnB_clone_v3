@@ -35,11 +35,16 @@ def states():
         return (jsonify(obj.to_dict()), 201)
 
 
-@app_views.route('/states/<state_id>')
+@app_views.route('/states/<state_id>', methods=['GET', 'DELETE'])
 def states_id(state_id=None):
     """states_id"""
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
-    return jsonify(state.to_dict())
+    if request.method == 'GET':
+        return jsonify(state.to_dict())
+    if request.method == 'DELETE':
+        storage.delete(state)
+        storage.save()
+        return (jsonify({}), 200)
 
