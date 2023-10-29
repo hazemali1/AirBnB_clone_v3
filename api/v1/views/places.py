@@ -1,15 +1,10 @@
 #!/usr/bin/python3
 """ Place """
-
-
 from flask import jsonify, abort, make_response, request
 from models import storage
 from models.place import Place
 from models.city import City
 from api.v1.views import app_views
-"""
-documented for place
-"""
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
