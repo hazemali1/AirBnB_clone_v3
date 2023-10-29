@@ -80,10 +80,6 @@ def put_place(place_id):
     data = request.get_json()
     if not data:
         abort(400, description="Not a JSON")
-    if "name" not in data:
-        abort(400, description="Missing name")
-    if "user_id" not in data:
-        abort(400, description="Missing user_id")
     keys_to_ignore = ["id", "user_id", "created_at", "updated_at", "city_id"]
     for key, value in data.items():
         if key not in keys_to_ignore:
