@@ -39,7 +39,7 @@ def users():
 
 
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
-def amenity_id(user_id=None):
+def user_id(user_id=None):
     """user_id"""
     user = storage.get(User, user_id)
     if user is None:
