@@ -1,19 +1,40 @@
+
 #!/usr/bin/python3
-""" City """
-from flask import jsonify, abort, make_response, request
-from models import storage
-from models.state import State
-from models.city import City
+"""
+import app flask json
+"""
 from api.v1.views import app_views
+from flask import jsonify, abort
+from models import storage
+from models.engine.file_storage import class_dict
+from models.state import State
+"""
+import flask
+"""
+
 
 @app_views.route('/states')
-def get_state():
+def states():
     """
-    state_id
-    """
-    list_state = []
-    state = storage.all(State)
-    return jsonify(list_state.to_dict())
+    states
+		"""
+    li = []
+    states = storage.all(State)
+    for state in states.values():
+        li.append(state.to_dict())
+    return jsonify(li)
 
 
+@app_views.route('/states/<state_id>')
+def states_id(state_id=None):
+    """states_id"""
+    li = []
+    states = storage.all(State)
+    for state in states.values():
+        if state.id == state_id:
+            li.append(state.to_dict())
+    if len(li) != 0:
+        return jsonify(li)
+    else:
+        abort(404)
 
