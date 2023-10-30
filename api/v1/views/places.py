@@ -89,9 +89,7 @@ def put_place(place_id):
     return make_response(jsonify(place.to_dict()), 200)
 
 
-@app_views.route('/places_search', methods=['POST'],
-                 strict_slashes=False)
-@swag_from('documentation/places/search.yml', methods=['POST'])
+@app_views.route('/places_search', methods=['POST'], strict_slashes=False)
 def search_places_by_id():
     """ search places by id """
     if request.get_json() is None:
@@ -117,9 +115,9 @@ def search_places_by_id():
     list_places = []
     if states:
         states_obj = [storage.get(State, s_id) for s_id in states]
-        for state in states_obj:
-            if state:
-                for city in state.cities:
+        for statel in states_obj:
+            if statel:
+                for city in statel.cities:
                     if city:
                         for place in city.places:
                             list_places.append(place)
@@ -147,3 +145,4 @@ def search_places_by_id():
         places.append(d)
 
     return jsonify(places)
+
