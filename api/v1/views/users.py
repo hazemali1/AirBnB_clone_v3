@@ -7,6 +7,7 @@ from flask import jsonify, abort, request
 from models import storage
 from models.engine.file_storage import class_dict
 from models.user import User
+from flasgger.utils import swag_from
 """
 import flask
 """
@@ -40,7 +41,9 @@ def users():
 
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
 def user_id(user_id=None):
-    """user_id"""
+    """
+    user_id
+    """
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
