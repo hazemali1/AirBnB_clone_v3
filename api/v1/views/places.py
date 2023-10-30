@@ -121,7 +121,7 @@ def search_places():
 
     if cities:
         cities_obj = [storage.get(City, cities_id) for cities_id in cities]
-        for city in cities_id:
+        for city in cities_obj:
             if city:
                 for place in city.places:
                     if place:
@@ -141,4 +141,4 @@ def search_places():
         d.pop('amenities', None)
         places.append(d)
 
-    return jsonify(places)
+    return jsonify(list_places)
