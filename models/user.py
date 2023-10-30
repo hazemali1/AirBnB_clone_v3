@@ -6,6 +6,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 import os
+from hashlib import md5
 
 
 class User(BaseModel, Base):
