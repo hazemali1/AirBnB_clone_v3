@@ -5,6 +5,7 @@ from models import storage
 from models.place import Place
 from models.city import City
 from api.v1.views import app_views
+from flasgger.utils import swag_from
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
@@ -90,6 +91,7 @@ def put_place(place_id):
 
 
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
+@swag_from('documentation/places/search.yml', methods=['POST'])
 def search_places():
     data = request.get_json()
     if not data:

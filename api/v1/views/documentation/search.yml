@@ -1,0 +1,72 @@
+swagger: "2.0"
+info:
+  title: "Places Search API"
+  description: "API for searching places based on criteria."
+  version: "1.0"
+
+paths:
+  /api/v1/places_search:
+    post:
+      tags:
+        - "Places"
+      summary: "Search for places based on criteria"
+      description: "This endpoint allows you to search for places based on states, cities, and amenities."
+      operationId: "searchPlaces"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "criteria"
+          in: "body"
+          description: "Search criteria"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              states:
+                type: "array"
+                description: "List of State IDs"
+                items:
+                  type: "string"
+              cities:
+                type: "array"
+                description: "List of City IDs"
+                items:
+                  type: "string"
+              amenities:
+                type: "array"
+                description: "List of Amenity IDs"
+                items:
+                  type: "string"
+      responses:
+        200:
+          description: "Successful search"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Place"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/Error"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  Place:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      # Add more properties as needed
+  Error:
+    type: "object"
+    properties:
+      error:
+        type: "string"
