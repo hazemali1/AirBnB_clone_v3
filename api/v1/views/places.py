@@ -91,7 +91,7 @@ def put_place(place_id):
 
 
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/places/search.yml', methods=['POST'])
+@swag_from('documentation/search.yml', methods=['POST'])
 def search_places():
     data = request.get_json()
     if not data:
