@@ -13,36 +13,26 @@ import flask
 """
 
 
-@app_views.route('places/<place_id>/amenities', methods=['GET'],
-                 strict_slashes=False)
-@swag_from('documentation/place_amenity/get_places_amenities.yml',
-           methods=['GET'])
+@app_views.route('/places/<place_id>/amenities', methods=['GET'])
 def get_place_amenities(place_id):
-    """
-    Retrieves the list of all Amenity objects of a Place
-    """
+    """ Reads place_amenty """
     place = storage.get(Place, place_id)
 
     if not place:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
-        amenities = [amenity.to_dict() for amenity in place.amenities]
-    else:
-        amenities = [storage.get(Amenity, amenity_id).to_dict()
-                     for amenity_id in place.amenity_ids]
+    amenities = [
+        amenity.to_dict()
+        for amenity in place.amenities
+    ]
 
     return jsonify(amenities)
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
-                 methods=['DELETE'], strict_slashes=False)
-@swag_from('documentation/place_amenity/delete_place_amenities.yml',
-           methods=['DELETE'])
+                 methods=['DELETE'])
 def delete_place_amenity(place_id, amenity_id):
-    """
-    Deletes a Amenity object of a Place
-    """
+    """ Deletes place_amenity """
     place = storage.get(Place, place_id)
 
     if not place:
@@ -53,47 +43,42 @@ def delete_place_amenity(place_id, amenity_id):
     if not amenity:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
-        if amenity not in place.amenities:
-            abort(404)
-        place.amenities.remove(amenity)
-    else:
-        if amenity_id not in place.amenity_ids:
-            abort(404)
-        place.amenity_ids.remove(amenity_id)
-
-    storage.save()
-    return make_response(jsonify({}), 200)
-
-
-@app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'],
-                 strict_slashes=False)
-@swag_from('documentation/place_amenity/post_place_amenities.yml',
-           methods=['POST'])
-def post_place_amenity(place_id, amenity_id):
-    """
-    Link a Amenity object to a Place
-    """
-    place = storage.get(Place, place_id)
-
-    if not place:
-        abort(404)
-
-    amenity = storage.get(Amenity, amenity_id)
-
-    if not amenity:
-        abort(404)
-
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         if amenity in place.amenities:
-            return make_response(jsonify(amenity.to_dict()), 200)
-        else:
-            place.amenities.append(amenity)
+            place.amenities.remove(amenity)
+            place.save()
+            return jsonify({})
     else:
         if amenity_id in place.amenity_ids:
-            return make_response(jsonify(amenity.to_dict()), 200)
-        else:
-            place.amenity_ids.append(amenity_id)
+            place.amenities_ids.remove(amenity_id)
+            place.save()
+            return jsonify({})
 
-    storage.save()
-    return make_response(jsonify(amenity.to_dict()), 201)
+    abort(404)
+
+
+@app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'])
+def post_place_amenity(place_id, amenity_id):
+    """ Creates place_amenity """
+    place = storage.get(Place, place_id)
+
+    if not place:
+        abort(404)
+
+    amenity = storage.get(Amenity, amenity_id)
+
+    if not amenity:
+        abort(404)
+
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
+        if amenity not in place.amenities:
+            place.amenities.append(amenity)
+            place.save()
+            return jsonify(amenity.to_dict()), 201
+    else:
+        if amenity_id not in place.amenity_ids:
+            place.amenity_ids.append(amenity_id)
+            place.save()
+            return jsonify(amenity.to_dict()), 201
+
+    return jsonify(amenity.to_dict())
