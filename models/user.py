@@ -25,3 +25,7 @@ class User(BaseModel, Base):
         reviews = relationship("Review", backref="User", cascade="all, delete")
     else:
         reviews = None
+
+    def __init__(self, *args, **kwargs):
+        """initializes user"""
+        super().__init__(*args, **kwargs)
