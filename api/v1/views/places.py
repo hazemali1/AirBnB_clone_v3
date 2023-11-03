@@ -22,7 +22,6 @@ def get_places(city_id):
 
 
 @app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/search.yml', methods=['POST'])
 def get_palce(place_id):
     """
     place
