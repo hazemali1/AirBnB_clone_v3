@@ -8,7 +8,6 @@ from api.v1.views import app_views
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
-@swag_from('documentation/search.yml', methods=['POST'])
 def get_places(city_id):
     """
     places
