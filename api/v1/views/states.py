@@ -54,7 +54,6 @@ def states_id(state_id=None):
         keys_to_ignore = ["id", "created_at", "updated_at"]
         for key, value in req.items():
             if key not in keys_to_ignore:
-                setattr(State, key, value)
-                abort(400, 'Not a JSON')
+                setattr(state, key, value)
         storage.save()
         return (jsonify(state.to_dict()), 200)
