@@ -5,7 +5,6 @@ from models import storage
 from models.place import Place
 from models.city import City
 from api.v1.views import app_views
-from flasgger.utils import swag_from
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
