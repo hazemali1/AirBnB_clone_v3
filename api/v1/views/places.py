@@ -34,7 +34,6 @@ def get_palce(place_id):
 
 @app_views.route('/places/<place_id>', methods=['DELETE'],
                  strict_slashes=False)
-@swag_from('documentation/search.yml', methods=['POST'])
 def delete_place(place_id):
     """
     place
@@ -48,7 +47,6 @@ def delete_place(place_id):
 
 
 @app_views.route('/cities/<city_id>/places', methods=['POST'])
-@swag_from('documentation/search.yml', methods=['POST'])
 def post_place(city_id):
     """
     place
@@ -73,7 +71,6 @@ def post_place(city_id):
 
 
 @app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
-@swag_from('documentation/search.yml', methods=['POST'])
 def put_place(place_id):
     """
     place
@@ -93,7 +90,6 @@ def put_place(place_id):
 
 
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/search.yml', methods=['POST'])
 def search_places():
     """
     search_places
